@@ -54,6 +54,9 @@ void registerUsingServicePrincipal(WebApplicationBuilder builder)
         clientBuilder.AddBlobServiceClient(
             new Uri("https://<account-name>.blob.core.windows.net"));
 
+        // By default, the client builder creates a DefaultAzureCredential instance on your
+        // behalf. For production use, it is strongly recommended that you register an 
+        // instance of the specific credential type with the builder.
         clientBuilder.UseCredential(new ClientSecretCredential(tenantId, clientId, clientSecret));
     });
     #endregion snippet_ClientSecretCredential_UseCredential
