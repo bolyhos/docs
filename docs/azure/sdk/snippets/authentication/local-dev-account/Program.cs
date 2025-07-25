@@ -50,7 +50,10 @@ void registerUsingServicePrincipal(WebApplicationBuilder builder)
         clientBuilder.AddBlobServiceClient(
             new Uri("https://<account-name>.blob.core.windows.net"));
 
-        clientBuilder.UseCredential(new DefaultAzureCredential());
+        // By default, the client builder creates a DefaultAzureCredential instance on your
+        // behalf. If you want to customize the credential used for Azure clients, you can 
+        // register a custom instance with the builder.
+        clientBuilder.UseCredential(new AzureCliCredential());
     });
     #endregion snippet_DefaultAzureCredential_UseCredential
 }
